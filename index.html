@@ -8,6 +8,14 @@
   </head>
   <body>
     <header>
+      <div id="warning">
+        <p>
+          This website is just a wrapper for
+          <a target="_blank" href="https://embed.su/">embeb.su</a> I do not host
+          or sell any of the movies featured here.
+        </p>
+        <span class="close-warning">&times;</span>
+      </div>
       <nav>
         <h1>Movies For You</h1>
         <div class="search-container">
@@ -37,11 +45,28 @@
         <p id="overview"></p>
         <button id="watch-trailer" class="btn">Trailer</button>
         <button id="watch-movie" class="btn">Play Movie</button>
+        <span
+          >It is recommend to watch movies with
+          <a
+            target="_blank"
+            style="color: whitesmoke; font-style: italic"
+            href="https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm"
+            >ublock</a
+          >
+          installed.</span
+        >
 
         <div id="content-container"></div>
       </div>
     </div>
 
     <script type="module" src="main.js"></script>
+    <script>
+      const closeWarning = document.querySelector(".close-warning");
+
+      closeWarning.addEventListener("click", () => {
+        document.getElementById("warning").style.display = "none";
+      });
+    </script>
   </body>
 </html>

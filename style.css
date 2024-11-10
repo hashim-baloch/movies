@@ -17,7 +17,24 @@ header {
   top: 0;
   z-index: 100;
 }
-
+#warning {
+  display: flex;
+  justify-content: center;
+  background-color: #ff000d5f;
+  width: 100vw;
+  padding: 10px;
+}
+#warning a {
+  color: #f3f3f3;
+  font-style: italic;
+}
+#warning span {
+  font-size: 2rem;
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  cursor: pointer;
+}
 nav {
   max-width: 1200px;
   margin: 0 auto;
