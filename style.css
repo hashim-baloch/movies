@@ -8,6 +8,7 @@ body {
   font-family: "Arial", sans-serif;
   background-color: #141414;
   color: #ffffff;
+  overflow-x: hidden;
 }
 
 header {
@@ -155,12 +156,14 @@ main {
 
 .close {
   position: fixed;
-  right: 2rem;
+  right: 3rem;
   top: 1rem;
   color: white;
-  font-size: 2rem;
+  font-size: 4rem;
+  border: 2px solid black;
   cursor: pointer;
   z-index: 1001;
+  background-color: black;
 }
 #content-container {
   height: 80vh;

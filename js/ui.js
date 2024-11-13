@@ -64,8 +64,8 @@ async function loadContent(movie) {
   const modal = document.getElementById("trailer-modal");
   const ContentContainer = document.getElementById("content-container");
   const modalTitle = document.getElementById("modal-title");
-  const modalDescription = document.getElementById("overview");
   const trailerBtn = document.getElementById("watch-trailer");
+  const modalDescription = document.getElementById("overview");
   const watchMovieBtn = document.getElementById("watch-movie");
 
   const data = await fetchTrailer(movieId);
@@ -85,11 +85,11 @@ async function loadContent(movie) {
         .reverse()
         .map(
           (video) => `
-              <div class="video-wrapper">
-              <h3 class="video-title">${video.name} (${video.type})</h3>
-              <div class="video-container">
-              <iframe src="${getVideoEmbedUrl(video)}" 
-              frameborder="0" 
+          <div class="video-wrapper">
+          <h3 class="video-title">${video.name} (${video.type})</h3>
+          <div class="video-container">
+          <iframe src="${getVideoEmbedUrl(video)}" 
+          frameborder="0" 
               allowfullscreen>
               </iframe>
               </div>
@@ -103,16 +103,30 @@ async function loadContent(movie) {
   });
   watchMovieBtn.addEventListener("click", () => {
     ContentContainer.innerHTML = "";
-    ContentContainer.innerHTML = `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://embed.su/embed/movie/${movieId}" ></iframe>`;
+    ContentContainer.innerHTML = `
+    <button id="fullScreenBtn" class="btn">Click me to make it Full Screen!</button>
+    <iframe style=" height:400px; aspect-ratio: 16 / 9;" src="https://embed.su/embed/movie/${movieId}" ></iframe>`;
+    const fullScreenBtn = document.getElementById("fullScreenBtn");
+    fullScreenBtn.addEventListener("click", () => {
+      const iframe = document.querySelector("iframe");
+      console.log("Btn was clicked!");
+      iframe.style.position = "fixed";
+      iframe.style.top = "0";
+      iframe.style.left = "0";
+      iframe.style.aspectRatio = "none";
+      iframe.style.height = "100vh";
+      iframe.style.width = "100vw";
+      document.querySelector("body").style.overflow = "hidden";
+    });
   });
 }
-
 export function setupModalEvents() {
   const modal = document.getElementById("trailer-modal");
   const closeBtn = document.querySelector(".close");
-
   closeBtn.addEventListener("click", () => {
     modal.style.display = "none";
+
+    document.querySelector("body").style.overflowY = "scroll";
     const ContentContainer = document.getElementById("content-container");
     ContentContainer.innerHTML = ""; // Clear videos when closing
   });
